@@ -1,25 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
-.head {
-  background-color: black;
-  color: white;
-  display: flex;
-}
 
-.title {
-  display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-}
-
-ul {
-  text-align: right;
-}
-
-li {
+li{
   list-style: none;
-  display: inline;
-  margin-left: 20px;
-  padding: 0 10px;
 }

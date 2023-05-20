@@ -1,0 +1,12 @@
+<h1>User info</h1>
+  <%= form_with model: @user, url:user_path(@user.id), method: :patch do |f| %>
+    <label for="inputName">Name</label>
+      <%= f.text_field :name, autfocus: true, id:"name", placeholder:"name" %>
+   
+    <label for="inputImage">Image</label>
+      <%= f.file_field :image, placeholder: "Image", accept: "image/*" %> 
+    
+    <h4>Introduction</h4>
+      <%= f.text_area :introduction, autfocus: true, id:"introduction" %>
+    <%= f.submit 'Update User' %>
+  <% end %>
