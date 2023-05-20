@@ -6,8 +6,10 @@
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
 <ul>
+<% if user %>
 <li>name <%= user.name %></li>
 <li>introduction <%= user.introduction %></li>
+<% end %>
 <li>
   <%= link_to "edit", edit_user_path(current_user) %>
 </li>
