@@ -1,19 +1,19 @@
 <h2>User info</h2>
 <h4>画像</h4>
-  <% if user && user.image.attached? %>
-    <%= image_tag user.image, size: "200x200" %>
+  <% if user && user.profile_image.attached? %>
+    <%= image_tag user.profile_image, size: "200x200" %>
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
-<ul>
 <% if user %>
+<ul>
 <li>name <%= user.name %></li>
 <li>introduction <%= user.introduction %></li>
-<% end %>
-<li>
-  <%= link_to "edit", edit_user_path(current_user) %>
-</li>
+  <%= link_to edit_user_path(current_user),class: "btn btn-outline-secondary btn-block" do %>
+  <i class="fas fa-user-cog"></i>
+  <% end %>
 </ul>
+<% end %>
 <h2>New book</h2>
 <%= form_with model: book do |f| %>
 <h4>title</h4>
@@ -22,5 +22,5 @@
 <h4>opinion</h4>
 <%= f.text_area :body %>
 
-<%= f.submit 'Create book' %>
+<%= f.submit "Create Book"  %>
 <% end %>

@@ -1,6 +1,6 @@
 <h1>User info</h1>
 <% if @user.errors.any? %>
-  <%= @user.errors.count %>件のエラーが発生しました
+  <%= @user.errors.count %>件のerrorが発生しました
   <ul>
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -13,7 +13,7 @@
       <%= f.text_field :name, autfocus: true, id:"name", placeholder:"name" %>
    
     <label for="inputImage">Image</label>
-      <%= f.file_field :image, placeholder: "Image", accept: "image/*" %> 
+      <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %> 
     
     <h4>Introduction</h4>
       <%= f.text_area :introduction, autfocus: true, id:"introduction" %>
