@@ -70,32 +70,87 @@ new_rails_conductor_inbound_email_source GET    /rails/conductor/action_mailbox/
                update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                               active_storage/disk#update
                     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
 
-<h2>User info</h2>
-<h4>画像</h4>
-  <% if user && user.profile_image.attached? %>
-    <%= image_tag user.profile_image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-<ul>
-<% if user %>
-<li>name <%= user.name %></li>
-<li>introduction <%= user.introduction %></li>
-<% end %>
-<li calss
-  <%= link_to "edit", edit_user_path(current_user) %>
-</li>
-</ul>
-<h2>New book</h2>
-<%= form_with model: book do |f| %>
-<h4>title</h4>
-<%= f.text_field :title %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<h4>opinion</h4>
-<%= f.text_area :body %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+  	<header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    	  <div class="container">
+		      <a class="navbar-brand" href="/">Bookers</a>
+		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			     <span class="navbar-toggler-icon"></span>
+		      </button>
 
-<%= f.submit 'Create book' %>
-<% end %>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			      <div class="navbar-nav ml-auto">
+        			<% if user_signed_in? %>
+        				<ul class="navbar-nav ml-auto">
+									<li class="nav-item">
+										<%= link_to user_path(current_user.id), class: "nav-link" do %>
+											<i class="fas fa-home"></i>Home
+										<% end %>
+									</li>
+									<li class="nav-item">
+										<%= link_to users_path, class: "nav-link" do %>
+											<i class="fas fa-users"></i>Users
+										<% end %>
+									</li>
+									<li class="nav-item">
+										<%= link_to books_path, class: "nav-link" do %>
+											<i class="fas fa-book-open"></i>Books
+										<% end %>
+									</li>
+									<li class="nav-item">
+										<%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
+											<i class="fas fa-sign-out-alt"></i>Log out
+										<% end %>
+									</ll>
+							<% else %>
+									<li class="nav-item">
+										<%= link_to root_path, class: "nav-link" do %>
+											<i class="fas fa-home"></i>Home
+										<% end %>
+									</li>
+									<li class="nav-item">
+										<%= link_to home_about_path, class: "nav-link" do %>
+											<i class="fas fa-link"></i>About
+										<% end %>
+										</li>
+									<li class="nav-item">
+										<%= link_to new_user_registration_path, class: "nav-link" do %>
+											<i class="fas fa-user-plus"></i>Sign up
+										<% end %>
+									</li>
+									<li class="nav-item">
+										<%= link_to new_user_session_path, class: "nav-link" do%>
+											<i class="fas fa-sign-in-alt"></i>Log in
+										<% end %>
+									</li>
+								</ul>
+							<% end %>
+     			 </div>
+    		 </div>
+   		 </div>
+    </nav>
+    </header>
+  <main>
+    <p id= "notice"><%= notice %></p>
+    <%= yield %>
+  </main>
+  <footer>
+       <p class="text-center">CopyRight Infratop.inc</p>
+  </footer>
+  </body>
+</html>
 
 
 This README would normally document whatever steps are necessary to get the

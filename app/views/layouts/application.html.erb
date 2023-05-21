@@ -39,36 +39,36 @@
 									</li>
 									<li class="nav-item">
 										<%= link_to destroy_user_session_path, class: "nav-link", method: :delete do %>
-						<i class="fas fa-sign-out-alt"></i>Log out
-						<% end %>
-					</ll>
-				<% else %>
-					<li class="nav-item">
-						<%= link_to root_path, class: "nav-link" do %>
-						<i class="fas fa-home"></i>Home
-						<% end %>
-					</li>
-					<li class="nav-item">
-						<%= link_to home_about_path, class: "nav-link" do %>
-						<i class="fas fa-link"></i>About
-						<% end %>
-					</li>
-					<li class="nav-item">
-						<%= link_to new_user_registration_path, class: "nav-link" do %>
-						<i class="fas fa-user-plus"></i>Sign up
-						<% end %>
-					</li>
-					<li class="nav-item">
-						<%= link_to new_user_session_path, class: "nav-link" do%>
-						<i class="fas fa-sign-in-alt"></i>Log in
-						<% end %>
-					</li>
-				<% end %>
-				</ul>
-      </div>
-      </div>
-    </div>
-    </nav>
+											<i class="fas fa-sign-out-alt"></i>Log out
+										<% end %>
+									</ll>
+							<% else %>
+									<li class="nav-item">
+										<%= link_to root_path, class: "nav-link" do %>
+											<i class="fas fa-home"></i>Home
+										<% end %>
+									</li>
+									<li class="nav-item">
+										<%= link_to home_about_path, class: "nav-link" do %>
+											<i class="fas fa-link"></i>About
+										<% end %>
+										</li>
+									<li class="nav-item">
+										<%= link_to new_user_registration_path, class: "nav-link" do %>
+											<i class="fas fa-user-plus"></i>Sign up
+										<% end %>
+									</li>
+									<li class="nav-item">
+										<%= link_to new_user_session_path, class: "nav-link" do%>
+											<i class="fas fa-sign-in-alt"></i>Log in
+										<% end %>
+									</li>
+								</ul>
+							<% end %>
+     			 </div>
+    		 </div>
+   		 </div>
+    	</nav>
     </header>
   <main>
     <p id= "notice"><%= notice %></p>
