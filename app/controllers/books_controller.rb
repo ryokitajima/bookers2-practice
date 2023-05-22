@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :correct_user, only: [:edit, :update]
+  before_action :is_matching_login_book, only: [:edit, :update]
   def index
     @book = Book.new
     @books = Book.all
@@ -33,7 +33,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    
+    @user = current_user
   end
 
   def update
@@ -52,15 +52,16 @@ class BooksController < ApplicationController
   end
 
   private
-  # ストロングパラメータ
+  def user_params
+    params.require(:user).permit(:name, :introduction, :profile_image)
+  end
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
-  def correct_user
+  def is_matching_login_book
     @book = Book.find(params[:id])
-    @user = @book.user
-    redirect_to(books_path) unless @user == current_user
+    unless @book.user == current_user
+      redirect_to books_path
+    end
   end
-
 end
